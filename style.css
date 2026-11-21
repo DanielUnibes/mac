@@ -1,0 +1,149 @@
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+}
+
+input, textarea, .selectable {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+}
+
+/* Wallpapers estilo macOS Sonoma / Sequoia / Ventura / Big Sur */
+.wallpaper-sequoia {
+  background: radial-gradient(circle at 20% 25%, #ff7e5f 0%, transparent 45%),
+              radial-gradient(circle at 80% 20%, #feb47b 0%, transparent 45%),
+              radial-gradient(circle at 50% 80%, #2b5876 0%, transparent 60%),
+              linear-gradient(135deg, #1e3c72 0%, #2a5298 40%, #ff6b6b 85%, #feca57 100%);
+}
+.wallpaper-sonoma {
+  background: radial-gradient(circle at 75% 25%, #00d2ff 0%, transparent 50%),
+              radial-gradient(circle at 25% 75%, #3a7bd5 0%, transparent 55%),
+              radial-gradient(circle at 50% 50%, #f7971e 0%, transparent 45%),
+              linear-gradient(125deg, #0f2027 0%, #203a43 45%, #2c5364 100%);
+}
+.wallpaper-monterey {
+  background: radial-gradient(circle at 80% 15%, #ff0080 0%, transparent 45%),
+              radial-gradient(circle at 20% 85%, #7928ca 0%, transparent 50%),
+              linear-gradient(135deg, #140024 0%, #3b0764 50%, #9d174d 100%);
+}
+.wallpaper-ventura {
+  background: radial-gradient(circle at 70% 20%, #fde047 0%, transparent 40%),
+              radial-gradient(circle at 30% 60%, #f97316 0%, transparent 55%),
+              linear-gradient(160deg, #1e1b4b 0%, #312e81 45%, #ea580c 100%);
+}
+.wallpaper-aurora {
+  background: radial-gradient(circle at 25% 20%, #10b981 0%, transparent 45%),
+              radial-gradient(circle at 80% 70%, #3b82f6 0%, transparent 50%),
+              linear-gradient(135deg, #020617 0%, #064e3b 50%, #1e3a8a 100%);
+}
+
+/* Glassmorphism utilitários */
+.glass-bar {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+}
+.dark .glass-bar {
+  background: rgba(24, 24, 28, 0.55);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+}
+
+.glass-panel {
+  background: rgba(246, 246, 248, 0.82);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+}
+.dark .glass-panel {
+  background: rgba(30, 30, 34, 0.82);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+}
+
+.glass-dock {
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+}
+.dark .glass-dock {
+  background: rgba(22, 22, 26, 0.42);
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+}
+
+/* Animações de janela */
+@keyframes windowOpen {
+  0% { opacity: 0; transform: scale(0.92) translateY(14px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.window-animate-in {
+  animation: windowOpen 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scrollbars estilo macOS */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.55);
+}
+
+/* Handles de redimensionamento */
+.resize-handle {
+  position: absolute;
+  z-index: 30;
+}
+.resize-n { top: -3px; left: 8px; right: 8px; height: 6px; cursor: ns-resize; }
+.resize-s { bottom: -3px; left: 8px; right: 8px; height: 6px; cursor: ns-resize; }
+.resize-e { right: -3px; top: 8px; bottom: 8px; width: 6px; cursor: ew-resize; }
+.resize-w { left: -3px; top: 8px; bottom: 8px; width: 6px; cursor: ew-resize; }
+.resize-nw { top: -4px; left: -4px; width: 12px; height: 12px; cursor: nwse-resize; }
+.resize-ne { top: -4px; right: -4px; width: 12px; height: 12px; cursor: nesw-resize; }
+.resize-sw { bottom: -4px; left: -4px; width: 12px; height: 12px; cursor: nesw-resize; }
+.resize-se { bottom: -4px; right: -4px; width: 12px; height: 12px; cursor: nwse-resize; }
+
+/* Animação do equalizador de música */
+@keyframes eqBar {
+  0%, 100% { height: 25%; }
+  50% { height: 95%; }
+}
+.eq-playing div:nth-child(1) { animation: eqBar 0.6s ease-in-out infinite; }
+.eq-playing div:nth-child(2) { animation: eqBar 0.45s ease-in-out infinite 0.15s; }
+.eq-playing div:nth-child(3) { animation: eqBar 0.7s ease-in-out infinite 0.3s; }
+.eq-playing div:nth-child(4) { animation: eqBar 0.5s ease-in-out infinite 0.1s; }
+
+#top-menubar {
+  padding-top: env(safe-area-inset-top, 0px);
+  height: calc(1.75rem + env(safe-area-inset-top, 0px));
+}
+#mac-dock {
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dock bounce */
+@keyframes dockBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-18px); }
+  70% { transform: translateY(-6px); }
+}
+.dock-bouncing {
+  animation: dockBounce 0.65s ease;
+}
